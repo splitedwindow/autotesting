@@ -1,0 +1,13 @@
+<colorPalette>
+    <colors>
+        <color>red</color>
+        <color>green</color>
+        <color>blue</color>
+    </colors>
+    <isPrimary>true</isPrimary>
+    <rgb>
+        <r>255</r>
+        <g>0</g>
+        <b>0</b>
+    </rgb>
+</colorPalette>
