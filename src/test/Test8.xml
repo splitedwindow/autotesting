@@ -1,0 +1,25 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name="Task8 suit" verbose="5" data-provider-thread-count="6">
+    <test name="task8 employee" thread-count="10" parallel="methods">
+        <classes>
+            <class name="task8.Task8Test">
+                <methods>
+                    <exclude name="testParameterFormat" />
+                </methods>
+            </class>
+        </classes>
+    </test>
+    <test name="Parameter Test one">
+        <parameter name="name" value="John" />
+        <parameter name="salary" value="9000" />
+        <parameter name="expectedResult" value="John's salary is 9000.0" />
+        <classes>
+            <class name="task8.Task8Test">
+                <methods>
+                    <include name="testParameterFormat" />
+                </methods>
+            </class>
+        </classes>
+    </test>
+
+</suite>
