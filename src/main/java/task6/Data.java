@@ -16,8 +16,10 @@ public class Data {
     List<String> colors;
     @Column
     Boolean isPrimary;
-//    @Column
-    Rgb rgb;
+
+    @OneToOne(cascade = CascadeType.ALL) // Defines a one-to-one relationship
+    @JoinColumn(name = "rgb_id", referencedColumnName = "id")
+    private Rgb rgb;
 
     public List<String> getColors() {
         return colors;
@@ -47,52 +49,8 @@ public class Data {
         return "ColorPalette{" +
                 "colors=" + colors +
                 ", isPrimary=" + isPrimary +
-                ", rgb=" + rgb +
+//                ", rgb=" + rgb +
                 '}';
     }
 }
 
-class Rgb implements Serializable {
-    int r;
-    int g;
-    int b;
-
-    Rgb(int r, int g, int b) {
-        this.r = r;
-        this.g = g;
-        this.b = b;
-    }
-
-    public int getR() {
-        return r;
-    }
-
-    public void setR(int r) {
-        this.r = r;
-    }
-
-    public int getG() {
-        return g;
-    }
-
-    public void setG(int g) {
-        this.g = g;
-    }
-
-    public int getB() {
-        return b;
-    }
-
-    public void setB(int b) {
-        this.b = b;
-    }
-
-    @Override
-    public String toString() {
-        return "Rgb{" +
-                "r=" + r +
-                ", g=" + g +
-                ", b=" + b +
-                '}';
-    }
-}

@@ -16,5 +16,6 @@
         <property name="hibernate.hbm2ddl.auto">update</property>
 
         <mapping class="task6.Data"/>
+        <mapping class="task6.Rgb"/>
     </session-factory>
 </hibernate-configuration>
