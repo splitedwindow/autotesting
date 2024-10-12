@@ -13,6 +13,8 @@ public class Data {
     @Column
     private Long id;
     @ElementCollection
+    @CollectionTable(name = "Data_colors", joinColumns = @JoinColumn(name = "data_id"))
+    @Column(name = "color")
     List<String> colors;
     @Column
     Boolean isPrimary;

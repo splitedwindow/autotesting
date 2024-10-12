@@ -7,6 +7,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
+import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
@@ -22,19 +23,30 @@ public class Task11 {
         driver.get("https://demoqa.com/radio-button");
         System.out.println(driver.getCurrentUrl());
 
-        // step 1: do something
-        WebElement yesRadio = driver.findElement(By.id("yesRadio"));
+        // step 1: click
 
-        // step 2: do something 2
+        WebElement labelForYesRadio = driver.findElement(By.cssSelector("label[for='yesRadio']"));
+        WebElement yesRadioButton = driver.findElement(By.id("yesRadio"));
+        if (!labelForYesRadio.isSelected()) {
+            labelForYesRadio.click();
+            Assert.assertTrue(yesRadioButton.isSelected());
+        }
+
+
+        // step 2: click "impressive" radio
+
+        WebElement labelForImpressiveRadio = driver.findElement(By.cssSelector("label[for='impressiveRadio']"));
         WebElement impressiveRadio = driver.findElement(By.id("impressiveRadio"));
 
-        // step 3: do something 3
-        WebElement noRadio = driver.findElement(By.id("noRadio"));
+        if(!labelForImpressiveRadio.isSelected()) {
+            labelForImpressiveRadio.click();
 
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(2));
+        }
+        Assert.assertTrue(impressiveRadio.isSelected());
 
-
-        Assert.assertTrue(yesRadio.isDisplayed());
+        // step 3: validate "impressive" text is being shown
+        WebElement impressiveText = driver.findElement(By.xpath("/html/body/div[2]/div/div/div/div[2]/div[2]/p/span"));
+        Assert.assertEquals(impressiveText.getText(), "Impressive", "The displayed message should match the expected text.");
 
     }
 
@@ -42,7 +54,13 @@ public class Task11 {
     void setup() {
         ChromeDriverManager.getInstance().setup();
         driver = new ChromeDriver();
+    }
 
-
+    @AfterClass
+    void tearDown() {
+        // Close the browser
+        if (driver != null) {
+            driver.quit();
+        }
     }
 }

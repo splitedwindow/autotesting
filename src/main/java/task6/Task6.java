@@ -13,6 +13,8 @@ public class Task6 {
         Rgb rgb = new Rgb(45, 55 ,65);
         data.setIsPrimary(true);
         data.setRgb(rgb);
+        List<String> colorList = Arrays.asList("purple", "green", "blue");
+        data.setColors(colorList);
         Long id = (Long) session.save(data);
 
         //read
@@ -20,15 +22,12 @@ public class Task6 {
         System.out.println(readData);
 
         // update
-        List<String> colorList = Arrays.asList("purple", "green", "blue");
-        data.setColors(colorList);
+        data.setIsPrimary(false);
         System.out.println(data);
 
         // delete
         session.delete(readData);
 
-        session.save(data);
         session.close();
-        HibernateConnector.shutdown();
     }
 }
