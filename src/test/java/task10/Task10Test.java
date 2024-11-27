@@ -10,7 +10,7 @@ import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
-public class Task10 {
+public class Task10Test {
     WebDriver driver;
     public static void main(String[] args) {
 
